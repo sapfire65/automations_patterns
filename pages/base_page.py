@@ -56,7 +56,7 @@ class BasePage:
         self.waite_visible_element(xpath_locator=locator).click()
 
     def scroll_in_too(self, how, what):
-        """Метод скролинга до элемента c проверкой видимости"""
+        """Метод скроллинга до элемента с проверкой видимости"""
         try:
             position = self.driver.find_element(how, what)
             self.driver.execute_script("return arguments[0].scrollIntoView();", position)
