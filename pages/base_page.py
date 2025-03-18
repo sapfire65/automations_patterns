@@ -3,7 +3,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
-
 from conftest import driver
 
 
@@ -66,4 +65,3 @@ class BasePage:
         except (NoSuchElementException, TimeoutException):
             return False
         return True
-

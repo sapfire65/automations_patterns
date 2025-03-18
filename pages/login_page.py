@@ -4,15 +4,15 @@ from faker import Faker
 
 
 # Класс страницы
-class LoginPage(BasePage):  # Наследование от BasePage
+class RegistrationPage(BasePage):  # Наследование от BasePage
 
     fake = Faker()
     fake_email = fake.email()
 
 
     # URL страницы
-    # PAGE_URL = "https://demo.opensource-socialnetwork.org/"
-    PAGE_URL = "http://qa-playground-social.com/"
+    PAGE_URL = "https://demo.opensource-socialnetwork.org/"
+    # PAGE_URL = "http://qa-playground-social.com/"
 
     # Локаторы страницы
     FIRST_NAME_FIELD = "//input[@placeholder='First Name']"
@@ -24,8 +24,8 @@ class LoginPage(BasePage):  # Наследование от BasePage
     MALE_RADIO_BUTTON = '(//input[@class="ossn-radio-input ossn-field-required"])[1]'
     CONFIRM_RADIO_BUTTON = '//input[@name="gdpr_agree"]'
     BIRTHDATE_OBJ = "//input[@placeholder='Birthdate']"
-
-    LOGIN_BUTTON = ("xpath", "//input[@id='ossn-submit-button']")
+    LOGIN_BUTTON = "//input[@id='ossn-submit-button']"
+    MESSAGE_DONE = "//div[@class='ossn-message-done']"
 
 
     def enter_first_name(self):
@@ -67,5 +67,9 @@ class LoginPage(BasePage):  # Наследование от BasePage
 
 
     def click_on_login_button(self):
-        self.driver.find_element(*self.LOGIN_BUTTON).click()
+        self.waite_visible_element(self.LOGIN_BUTTON).click()
+
+    def waite_message_done_registered(self):
+        return self.waite_visible_element(self.MESSAGE_DONE)
+
 

@@ -1,12 +1,12 @@
 import pytest
-from pages.login_page import LoginPage
+from pages.login_page import RegistrationPage
 from time import sleep
 
 
 class TestLoginPage:
 
     def setup_method(self):
-        self.login_page = LoginPage(self.driver)  # Создаем обьект страницы
+        self.login_page = RegistrationPage(self.driver)  # Создаем обьект страницы
 
     # Вызываем через объект страницы все нужные методы, это и есть шаги теста
     def test_login_in_account(self):
@@ -22,8 +22,9 @@ class TestLoginPage:
         self.login_page.click_on_birthdate_button_and_insert_data_year_month(
             '26', '2000', 'Sep.'
         )
+        self.login_page.click_on_login_button()
+        assert self.login_page.waite_message_done_registered()
 
 
-        sleep(10)
-
+        sleep(5)
 
