@@ -22,7 +22,7 @@ class BasePage:
 
     # Данный метод будет вызываться для любой страницы, принимая ее PAGE_URL
     def open(self):
-        self.driver.get(self.PAGE_URL)
+        self.driver.get(self._PAGE_URL)
 
     # Ниже описываются общие для всех страниц методы
     def click_on_logout_button(self):
