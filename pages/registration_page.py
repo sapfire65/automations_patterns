@@ -6,18 +6,20 @@ from faker import Faker
 # Класс страницы
 class RegistrationPage(BasePage):  # Наследование от BasePage
 
-    fake = Faker()
+    fake = Faker('ru_RU')
     fake_email = fake.email()
 
 
+
     # URL страницы
-    PAGE_URL = "https://demo.opensource-socialnetwork.org/"
-    # PAGE_URL = "http://qa-playground-social.com/"
+    # PAGE_URL = "https://demo.opensource-socialnetwork.org/"
+    PAGE_URL = "http://qa-playground-social.com/"
 
     # Локаторы страницы
     FIRST_NAME_FIELD = "//input[@placeholder='First Name']"
     LAST_NAME_FIELD = "//input[@placeholder='Last Name']"
     EMAIL_FIELD = "//input[@placeholder='Email']"
+    TELEPHONE_FIELD = "//INPUT[@class='ossn-text-input mobilelogin']"
     RE_ENTER_EMAIL_FIELD = "//input[@placeholder='Re-enter Email']"
     USER_NAME_FIELD = "//input[@placeholder='Username']"
     PASSWORD_FIELD = "//input[@placeholder='Password']"
@@ -36,6 +38,9 @@ class RegistrationPage(BasePage):  # Наследование от BasePage
 
     def enter_email(self):
         self.waite_visible_element(self.EMAIL_FIELD).send_keys(self.fake_email)
+
+    def enter_telephone(self):
+        self.waite_visible_element(self.TELEPHONE_FIELD).send_keys(self.fake.phone_number())
 
     def enter_confirm_email(self):
         self.waite_visible_element(self.RE_ENTER_EMAIL_FIELD).send_keys(self.fake_email)

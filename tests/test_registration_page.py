@@ -1,5 +1,4 @@
-import pytest
-from pages.login_page import RegistrationPage
+from pages.registration_page import RegistrationPage
 from time import sleep
 
 
@@ -17,6 +16,7 @@ class TestLoginPage:
         self.login_page.enter_confirm_email()
         self.login_page.enter_username()
         self.login_page.enter_password()
+        self.login_page.enter_telephone()
         self.login_page.click_on_male_button()
         self.login_page.click_on_confirm_button()
         self.login_page.click_on_birthdate_button_and_insert_data_year_month(
